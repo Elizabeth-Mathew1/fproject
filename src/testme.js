@@ -127,10 +127,21 @@ const header = {
 const Testme = () => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
+  const [selectedFile, setSelectedFile] = useState();
+  const [isSelected, setIsSelected] = useState(false);
 
   const handleUploadClick = () => {
     document.getElementById('upload').click();
+    
   };
+
+  const onChangeFile = (event) => {
+    setSelectedFile(event.target.files[0]);
+    setIsSelected(true);
+    // document.getElementById("uploaded_file_name").style = { 
+    //   value: [event.target.files[0].name],
+    // }
+  }
   
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -295,13 +306,17 @@ const Testme = () => {
               onClick={handleUploadClick}
             >
               Upload Scan
-              
               <IconContext.Provider value={{ color: "#14da8f", size: "25px", marginLeft: "20%"}}>
                 <IoChevronForwardCircle />
               </IconContext.Provider>
             </motion.div>
-            <input type="file" id="upload" style={{ display: 'none' }} />
+            <input type="file" id="upload" style={{ display: 'none' }} onChange={onChangeFile}/> 
           </motion.div>
+          <motion.label id = "uploaded_file_name">
+              {
+                isSelected? selectedFile.name : ""
+              }
+            </motion.label>
         </motion.div>
       </motion.div>
     </motion.div>
