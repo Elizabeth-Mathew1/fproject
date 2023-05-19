@@ -4,6 +4,7 @@ import { FaBehance, FaDribbble } from "react-icons/fa";
 import { IoMailOutline, IoChevronForwardCircle, IoStar, IoAdd, IoAddCircle, IoArrowUpCircle } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 let easeing = [0.6, -0.05, 0.01, 0.99];
 
@@ -335,10 +336,13 @@ const Testme = () => {
           whileHover={{scale:1.05}} 
           whileTap={{scale:0.95}}
           >
+            
           Get Results
+          <Link to = "/results">
           <IconContext.Provider value={{ color: "#14da8f", size: "25px", marginLeft: "20%"}}>
                 <IoChevronForwardCircle />
           </IconContext.Provider>
+          </Link>
         </motion.div>
         </motion.div>
       </motion.div>
