@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import "./App.scss";
 import { FaBehance, FaDribbble } from "react-icons/fa";
-import { IoMailOutline, IoChevronForwardCircle, IoStar } from "react-icons/io5";
+import { IoMailOutline, IoChevronForwardCircle, IoStar, IoAdd, IoAddCircle, IoArrowUpCircle } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { useState } from "react";
 
@@ -293,22 +293,25 @@ const Testme = () => {
               variants={btnGroup}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              style={{backgroundColor: 'black', color: 'white',width:'100%',
-              height:'56px',
-              padding:'0.5rem',
-              marginBottom:'2px',
-              fontSize: '20px',
-              borderRadius: '8px',
-              fontWeight: '600',
-              display:'flex',
-              justifyContent: 'center',
-              alignItems: 'center'}}
+              style = {{
+                backgroundColor:'white',
+                color:'black',
+                borderRadius: "0.25rem",
+                border: "1px solid black",
+                height:'56px',
+                display:'flex',
+                padding:'0.5rem',
+                marginBottom:'2px',
+                fontSize: '20px',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
               onClick={handleUploadClick}
             >
               Upload Scan
-              <IconContext.Provider value={{ color: "#14da8f", size: "25px", marginLeft: "20%"}}>
-                <IoChevronForwardCircle />
-              </IconContext.Provider>
+              <IconContext.Provider value={{ color: "#808080", size: "25px", marginLeft: "50%"}}>
+                <IoArrowUpCircle/>
+          </IconContext.Provider>
             </motion.div>
             <input type="file" id="upload" style={{ display: 'none' }} onChange={onChangeFile}/> 
           </motion.div>
@@ -317,6 +320,26 @@ const Testme = () => {
                 isSelected? selectedFile.name : ""
               }
             </motion.label>
+          <motion.div className="btn btn_secondary" 
+          variants={btnGroup}
+          style={{backgroundColor: 'black', color: 'white',
+              height:'56px',
+              padding:'0.5rem',
+              marginTop: '15px',
+              fontSize: '20px',
+              borderRadius: '8px',
+              fontWeight: '600',
+              display:'flex',
+              justifyContent: 'center',
+              alignItems: 'center'}}
+          whileHover={{scale:1.05}} 
+          whileTap={{scale:0.95}}
+          >
+          Get Results
+          <IconContext.Provider value={{ color: "#14da8f", size: "25px", marginLeft: "20%"}}>
+                <IoChevronForwardCircle />
+          </IconContext.Provider>
+        </motion.div>
         </motion.div>
       </motion.div>
     </motion.div>
