@@ -5,6 +5,7 @@ import {IconContext} from "react-icons";
 import { useState } from 'react';
 import Testme from './testme';
 import Home from './home';
+import Results from './results';
 import {motion} from 'framer-motion';
 import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 
@@ -12,13 +13,12 @@ import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 
 
 function App() {
-  
-  
   return (
     <Router>
       <Routes>
         <Route path = "/" element = {<Home/>} />
         <Route path = "/testme" element = {<Testme/>} />
+        <Route path = "/results" element = {<Results/>} />
       </Routes>
     </Router>
   );

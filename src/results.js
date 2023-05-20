@@ -4,7 +4,7 @@ import { FaBehance, FaDribbble } from "react-icons/fa";
 import { IoMailOutline, IoChevronForwardCircle, IoStar, IoAdd, IoAddCircle, IoArrowUpCircle } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 let easeing = [0.6, -0.05, 0.01, 0.99];
 
@@ -125,39 +125,15 @@ const header = {
   },
 };
 
-const Testme = () => {
+const Results = (props) => {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [selectedFile, setSelectedFile] = useState();
-  const [isSelected, setIsSelected] = useState(false);
-
-  const handleUploadClick = () => {
-    document.getElementById('upload').click();
-    
-  };
-
-  const onChangeFile = (event) => {
-    setSelectedFile(event.target.files[0]);
-    setIsSelected(true);
-    // document.getElementById("uploaded_file_name").style = { 
-    //   value: [event.target.files[0].name],
-    // }
-  }
-  
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
-
-  const handleAgeChange = (event) => {
-    setAge(event.target.value);
-  };
-  const navigateToResults = () => {
-    navigate('/results', {state:{name: selectedFile}});
-  }
-  
-  return (
-    <motion.div initial="initial" animate="animate">
+    const location = useLocation();
+    const result = "  (not cancerous)";
+    const navigateHome = () => {
+      navigate('/');
+    }
+    return(
+        <motion.div initial="initial" animate="animate">
       <motion.header variants={stagger}>
         <motion.div className="logo_wrapper" variants={header}>
           cancer<span>Pred</span>
@@ -207,60 +183,70 @@ const Testme = () => {
           className="top_content_wrapper"
           style={{
             display: "flex",
+            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             marginLeft: "80px",
-            flexDirection: "column",
           }}
         >
+          <motion.div 
+          style={{
+            width: '100%',
+            display: "flex",
+            flexDirection: "column",}}>
+            <motion.div style={{
+            width: '100%',
+            display: "flex",
+            flexDirection: "row",}}>
+            <motion.label
+              htmlFor="results"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 1.4 }}
+              style={{
+                paddingBottom: "0.2rem",
+                fontSize: "32px",
+                fontWeight: "bold",
+              }}>
+            Results:
+          </motion.label>
+          <motion.label
+              htmlFor="results"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 1.4 }}
+              style={{
+                paddingBottom: "0.2rem",
+                fontSize: "32px",
+                fontWeight: "bold",
+                color: "#0BB7A1"
+              }}>
+            {result}
+          </motion.label>
+            </motion.div>
+          
           <motion.img
-            src={process.env.PUBLIC_URL + "/testme.svg"}
-            alt="testme"
+            src={process.env.PUBLIC_URL + "/lungCT.png"}
+            alt="lung"
             initial={{ x: 200, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.8 }}
-            style={{ width: "35%", paddingBottom: "5%" }}
+            style={{ width: "100%", paddingBottom: "5%", marginTop: "20px"}}
           />
-
-          <motion.div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              paddingBottom: "3%",
-            }}
-          >
-            <motion.label
-              htmlFor="name"
+        <motion.div style={{display: "flex",
+          flexDirection: "column", marginBottom: "20px"}}>
+          <motion.label
+              htmlFor="age"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 1 }}
+              transition={{ duration: 0.5, delay: 1.4 }}
               style={{
                 paddingBottom: "0.2rem",
-                fontSize: "19px",
+                fontSize: "14px",
               }}
             >
-              Name:
+              <b>Patient Name:</b> John Doe
             </motion.label>
-            <motion.input
-              id="name"
-              type="text"
-              value={name}
-              onChange={handleNameChange}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.2 }}
-              style={{
-                padding: "0.5rem",
-                borderRadius: "0.25rem",
-                border: "1px solid #0BB7A1",
-                outline: "none",
-                boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
-                marginBottom: "0.5rem",
-                width: "100%",
-                fontSize: "1rem",
-              }}
-            />
             <motion.label
               htmlFor="age"
               initial={{ opacity: 0 }}
@@ -268,65 +254,49 @@ const Testme = () => {
               transition={{ duration: 0.5, delay: 1.4 }}
               style={{
                 paddingBottom: "0.2rem",
-                fontSize: "19px",
+                fontSize: "14px",
               }}
             >
-              Age:
+              <b>Status:</b> Non-cancerous
             </motion.label>
-            <motion.input
-              id="age"
-              type="number"
-              value={age}
-              onChange={handleAgeChange}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.6 }}
+            <motion.label
+              htmlFor="age"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 1.4 }}
               style={{
-                padding: "0.5rem",
-                marginBottom:'0.3rem',
-                borderRadius: "0.25rem",
-                border: "1px solid #0BB7A1",
-                boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
-                
-                width: "100%",
-                fontSize: "1rem",
+                paddingBottom: "0.2rem",
+                fontSize: "14px",
               }}
-            />
-          </motion.div>
-          <motion.div className="btn_group" variants={stagger}>
-            <motion.div
-              className="btn btn_primary"
-              variants={btnGroup}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              style = {{
-                backgroundColor:'white',
-                color:'black',
-                borderRadius: "0.25rem",
-                border: "1px solid black",
-                height:'56px',
-                display:'flex',
-                padding:'0.5rem',
-                marginBottom:'2px',
-                fontSize: '20px',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}
-              onClick={handleUploadClick}
             >
-              Upload Scan
-              <IconContext.Provider value={{ color: "#808080", size: "25px", marginLeft: "50%"}}>
-                <IoArrowUpCircle/>
-          </IconContext.Provider>
-            </motion.div>
-            <input type="file" id="upload" style={{ display: 'none' }} onChange={onChangeFile}/> 
-          </motion.div>
-          <motion.label id = "uploaded_file_name">
-              {
-                isSelected? selectedFile.name : ""
-              }
+              <b>Size:</b> 42.9KB
             </motion.label>
-          <motion.div className="btn btn_secondary" 
+            <motion.label
+              htmlFor="age"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 1.4 }}
+              style={{
+                paddingBottom: "0.2rem",
+                fontSize: "14px",
+              }}
+            >
+              <b>PPI:</b> 512
+            </motion.label>
+          </motion.div>
+          <motion.label
+              htmlFor="age"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 1.4 }}
+              style={{
+                paddingBottom: "0.2rem",
+                fontSize: "12px",
+              }}
+            >
+              <b>*</b> PLease note that our model has an accuracy of 98.6%
+            </motion.label>
+            <motion.div className="btn btn_secondary" 
           variants={btnGroup}
           style={{backgroundColor: 'black', color: 'white',
               height:'56px',
@@ -340,16 +310,17 @@ const Testme = () => {
               alignItems: 'center'}}
           whileHover={{scale:1.05}} 
           whileTap={{scale:0.95}}
-          onClick={() => {navigateToResults();}}
+          onClick={navigateHome}
           > 
-          Get Results
+          Back to Home Page
           <IconContext.Provider value={{ color: "#14da8f", size: "25px", marginLeft: "20%"}}>
                 <IoChevronForwardCircle />
           </IconContext.Provider>
         </motion.div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </motion.div>
-  );
+    );
 };
-export default Testme;
+export default Results;
