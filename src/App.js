@@ -6,6 +6,7 @@ import { useState } from 'react';
 import Testme from './testme';
 import Home from './home';
 import Results from './results';
+import Stats from './stats'
 import {motion} from 'framer-motion';
 import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 
@@ -19,6 +20,7 @@ function App() {
         <Route path = "/" element = {<Home/>} />
         <Route path = "/testme" element = {<Testme/>} />
         <Route path = "/results" element = {<Results/>} />
+        <Route path = "/stats" element = {<Stats/>} />
       </Routes>
     </Router>
   );

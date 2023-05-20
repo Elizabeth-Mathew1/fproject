@@ -6,6 +6,7 @@ import { IconContext } from "react-icons";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+
 let easeing = [0.6, -0.05, 0.01, 0.99];
 
 const stagger = {
@@ -128,10 +129,12 @@ const header = {
 const Results = (props) => {
   const navigate = useNavigate();
     const location = useLocation();
+    const pName = location.state && location.state.p_name;
     const result = "  (not cancerous)";
     const navigateHome = () => {
       navigate('/');
     }
+    
     return(
         <motion.div initial="initial" animate="animate">
       <motion.header variants={stagger}>
@@ -245,8 +248,8 @@ const Results = (props) => {
                 fontSize: "14px",
               }}
             >
-              <b>Patient Name:</b> John Doe
-            </motion.label>
+              <b>Patient Name:</b> 
+            </motion.label>{pName}
             <motion.label
               htmlFor="age"
               initial={{ opacity: 0 }}
@@ -294,7 +297,7 @@ const Results = (props) => {
                 fontSize: "12px",
               }}
             >
-              <b>*</b> PLease note that our model has an accuracy of 98.6%
+              <b>*</b> Please note that our model has an accuracy of 98.6%
             </motion.label>
             <motion.div className="btn btn_secondary" 
           variants={btnGroup}

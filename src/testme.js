@@ -6,6 +6,8 @@ import { IconContext } from "react-icons";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+
+
 let easeing = [0.6, -0.05, 0.01, 0.99];
 
 const stagger = {
@@ -131,7 +133,10 @@ const Testme = () => {
   const [age, setAge] = useState("");
   const [selectedFile, setSelectedFile] = useState();
   const [isSelected, setIsSelected] = useState(false);
+  
 
+  
+  
   const handleUploadClick = () => {
     document.getElementById('upload').click();
     
@@ -153,7 +158,7 @@ const Testme = () => {
     setAge(event.target.value);
   };
   const navigateToResults = () => {
-    navigate('/results', {state:{name: selectedFile}});
+    navigate('/results', {state:{name: selectedFile,p_name: name, p_age: age}});
   }
   
   return (
