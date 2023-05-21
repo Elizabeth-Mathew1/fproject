@@ -211,7 +211,7 @@ const Results = (props) => {
                 fontSize: "32px",
                 fontWeight: "bold",
               }}>
-            Results:
+            Result:
           </motion.label>
           <motion.label
               htmlFor="results"
@@ -248,8 +248,20 @@ const Results = (props) => {
                 fontSize: "14px",
               }}
             >
-              <b>Patient Name:</b> 
-            </motion.label>{pName}
+              <b>Patient Name:</b> John Doe
+            </motion.label>
+            <motion.label
+              htmlFor="age"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 1.4 }}
+              style={{
+                paddingBottom: "0.2rem",
+                fontSize: "14px",
+              }}
+            >
+              <b>Age:</b> 52
+            </motion.label>
             <motion.label
               htmlFor="age"
               initial={{ opacity: 0 }}
@@ -286,6 +298,7 @@ const Results = (props) => {
             >
               <b>PPI:</b> 512
             </motion.label>
+          
           </motion.div>
           <motion.label
               htmlFor="age"

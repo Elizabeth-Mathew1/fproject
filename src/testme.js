@@ -133,9 +133,7 @@ const Testme = () => {
   const [age, setAge] = useState("");
   const [selectedFile, setSelectedFile] = useState();
   const [isSelected, setIsSelected] = useState(false);
-  
-
-  
+  const [isError, setIsError] = useState(false);
   
   const handleUploadClick = () => {
     document.getElementById('upload').click();
@@ -158,7 +156,13 @@ const Testme = () => {
     setAge(event.target.value);
   };
   const navigateToResults = () => {
-    navigate('/results', {state:{name: selectedFile,p_name: name, p_age: age}});
+    if(name === "" || age === "" || isSelected === false) {
+      setIsError(true);
+    }
+    else {
+      setIsError(false);
+      navigate('/results', {state:{name: selectedFile,p_name: name, p_age: age}});
+    }
   }
   
   return (
@@ -352,6 +356,16 @@ const Testme = () => {
                 <IoChevronForwardCircle />
           </IconContext.Provider>
         </motion.div>
+        <motion.label id = "error_text" style={{
+          marginTop: "15px",
+          color: "red",
+          fontWeight: "bold",
+          fontSize: "14px",
+        }}>
+              {
+                isError? "Please fill all fields!" : ""
+              }
+            </motion.label>
         </motion.div>
       </motion.div>
     </motion.div>

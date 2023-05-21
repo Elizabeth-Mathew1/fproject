@@ -5,7 +5,7 @@ import {IconContext} from "react-icons";
 import { useState } from 'react';
 import Testme from './testme';
 import {motion} from 'framer-motion';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 let easeing = [0.6,-0.05,0.01,0.99];
 
@@ -129,6 +129,10 @@ const header={
 
 
 const Home = () => {
+  const navigate = useNavigate();
+  const navigateToStats = () => {
+    navigate('/stats');
+  }
   
   
   return (
@@ -207,7 +211,7 @@ const Home = () => {
             </motion.div>
           
            
-            <motion.div className="btn btn_secondary" variants={btnGroup} whileHover={{scale:1.05}} whileTap={{scale:0.95}}>Check Stat</motion.div>
+            <motion.div className="btn btn_secondary" variants={btnGroup} whileHover={{scale:1.05}} whileTap={{scale:0.95}} onClick={() => {navigateToStats();}}>Check Stat</motion.div>
           </motion.div>
          
 
