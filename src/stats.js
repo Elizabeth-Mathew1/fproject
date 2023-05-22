@@ -196,8 +196,8 @@ const Stats = () => {
           }}
         >
           <motion.img
-            src={process.env.PUBLIC_URL + "/testme.svg"}
-            alt="testme"
+            src={process.env.PUBLIC_URL+"/lc_age.png"}
+            alt="bargraph"
             initial={{ x: 200, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.8 }}
