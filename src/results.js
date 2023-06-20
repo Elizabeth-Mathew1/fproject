@@ -130,6 +130,7 @@ const Results = (props) => {
   const navigate = useNavigate();
     const location = useLocation();
     const pName = location.state && location.state.p_name;
+    const pAge = location.state && location.state.p_age;
     const result = "  (not cancerous)";
     const navigateHome = () => {
       navigate('/');
@@ -248,7 +249,7 @@ const Results = (props) => {
                 fontSize: "14px",
               }}
             >
-              <b>Patient Name:</b> John Doe
+              <b>Patient Name:</b> {pName}
             </motion.label>
             <motion.label
               htmlFor="age"
@@ -260,7 +261,7 @@ const Results = (props) => {
                 fontSize: "14px",
               }}
             >
-              <b>Age:</b> 52
+              <b>Age:</b> {pAge}
             </motion.label>
             <motion.label
               htmlFor="age"

@@ -147,11 +147,11 @@ const Stats = () => {
         <motion.div className="menu_container" variants={stagger}>
           <motion.span variants={header}>
             <IconContext.Provider
-              value={{
+              value={/*{% raw %}*/{
                 color: "#000",
                 size: "18px",
                 className: "icons_container",
-              }}
+              }/*{% endraw %}*/}
             >
               <div className="icon">
                 <FaBehance />
@@ -201,7 +201,24 @@ const Stats = () => {
             initial={{ x: 200, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.8 }}
-            style={{ width: "35%", paddingBottom: "5%" }}
+            style={{ width: "100%", paddingBottom: "5%" }}
+          />
+          <motion.img
+            src={process.env.PUBLIC_URL+"/lc_place.png"}
+            alt="bargraph"
+            initial={{ x: 200, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            style={{ width: "100%", height:"200%", paddingBottom: "5%"}}
+          />
+
+          <motion.img
+            src={process.env.PUBLIC_URL+"/lc_alts.png"}
+            alt="bargraph"
+            initial={{ x: 200, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            style={{ width: "100%", paddingBottom: "5%",paddingRight:"5%" }}
           />
 
           <motion.div
