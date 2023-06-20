@@ -183,6 +183,8 @@ const Stats = () => {
         transition={{ duration: 0.3, ease: easeing }}
         style={{
           paddingBottom: "5%",
+          justifyContent: "center",
+            alignItems: "center",
         }}
       >
         <motion.div
@@ -191,17 +193,39 @@ const Stats = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginLeft: "80px",
+            // marginLeft: "80px",
             flexDirection: "column",
           }}
         >
+          <h1>Statistics</h1>
+          <Link 
+            to="https://docs.google.com/forms/d/e/1FAIpQLSeBvO9ukkMaU0SNLhUUCtpfVEO5NbRqLt7lKl7AlOkqYhiSNw/viewform?usp=sf_link"
+            target="_blank" rel="noopener noreferrer" 
+          >
+          <motion.button
+            whileHover={{
+              scale: 1.2,
+              transition: { duration: 1 },
+            }}
+            whileTap={{ scale: 0.9 }}
+            style={{ backgroundColor: "#14da8f", 
+            width: "25vw",
+            height: "10vh",
+            marginTop: "8%",
+            borderRadius: "10px",
+            borderColor: "#14da8f"
+          }}
+          >
+            <p style={{fontSize: "2vw", color: "#fff"}}>Take Survey &emsp; &gt;</p>
+            </motion.button>
+            </Link>
           <motion.img
             src={process.env.PUBLIC_URL+"/lc_age.png"}
             alt="bargraph"
             initial={{ x: 200, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.8 }}
-            style={{ width: "100%", paddingBottom: "5%" }}
+            style={{ width: "100%", paddingBottom: "5%", marginTop: "10%"}}
           />
           <motion.img
             src={process.env.PUBLIC_URL+"/lc_place.png"}
