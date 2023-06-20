@@ -115,10 +115,16 @@ header{
   @extend .dflex;
   justify-content: space-between;
   align-items: center;
-  background-color: $light_green;
+  background-color: $white;
   clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
   border-radius: 16px;
   padding:3%;
+  .top_content_wrapper{
+    h1{
+      font-size: 3.5vw;
+      color: $dark_green;
+    }
+  }
   .left_content_wrapper{
     width:48%;
     h2{
